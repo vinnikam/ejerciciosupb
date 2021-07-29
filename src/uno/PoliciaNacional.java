@@ -18,4 +18,14 @@ public class PoliciaNacional {
     public String toString(){
         return "Nada";
     }
+    protected void generaMensaje(){
+        System.out.println("Mensaje ");
+    }
+    public static void main(String[] args) {
+        PoliciaNacional poli = new PoliciaNacional();
+        poli.generaMensaje();
+    }
+}
+class Ejercito{
+    
 }

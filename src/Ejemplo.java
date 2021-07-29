@@ -23,7 +23,7 @@ public class Ejemplo {
         //LLAMR
        return 8; 
     }
-    public static void main (String[] gf){
+    public static void main5 (String[] gf){
         
         System.out.println("Calculando ... ");
 
@@ -32,9 +32,10 @@ public class Ejemplo {
         //LLAMAR CLASE;
         //NOMBRE NOMBREVARIABLE = new NOMBRECLASE ()
         Operaciones mivariable = new Operaciones();        
-        int nom = mivariable.suma(75, 88);  // regreso importante = al inicio int nom =
+        int nom = mivariable.sumar(75, 88);  // regreso importante = al inicio int nom =
         System.out.println("Resultado ");
         System.out.println(nom);
+
     }
     
  

@@ -12,6 +12,12 @@ import java.util.Scanner;
  * @author Vinni
  */
 public class OperacionesM {
+    private int sumar(int numero1, int numero2, int numero3){
+        //System.out.println("numero 1: "+numero1);
+        //System.out.println("numero 2: "+numero2);
+        int sumatotal = numero1 + numero2 + numero3;
+        return sumatotal;
+    }
     public Double sumar(double num1,double num2){
         return num1+num2;
     }
@@ -47,5 +53,14 @@ public class OperacionesM {
         }
         
         return numero;
+    }
+    
+    public int  calculaCos(){
+        return this.sumar(9, 9, 6);
+    }
+    public Double multiplicar(Double num1, Double num2 ){
+        //8*5 = 
+        //8+8+8+8+8
+        return null;
     }
 }

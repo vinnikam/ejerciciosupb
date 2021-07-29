@@ -1,23 +1,32 @@
 
 import java.util.Scanner;
+import uno.PoliciaNacional;
 
 /**
  *
  * @author Vinni
  */
 public class Principal {
-    public static void main(String[] arg) {
+    public static void main5(String[] arg) {
         System.out.println("Iniciando ..");
         Operaciones oper = new Operaciones();
             
-        int num1 = oper.leerNumeroEntero("Digite un número (1) mayor a 0, si lo digito mal repita : ");
-        int num2 = oper.leerNumeroEntero("Digite un número (2) mayor a 0, si lo digito mal repita : ");
+        int num1 = oper.leerConsola("Digite un número (1) mayor a 0, si lo digito mal repita : ");
+        int num2 = oper.leerConsola("Digite un número (2) mayor a 0, si lo digito mal repita : ");
 
         int resultado = oper.sumar(num1, num2);
         System.out.println(" La suma entre " + num1 + " y  " + num2 + " = " + resultado);
         
         //System.out.println("lei "+num1);
         System.out.println("Finalizando ..");
+        
+        double uno = oper.leerConsolaD("num1");
+        double dos = oper.leerConsolaD("num2");
+        double salida  = oper.sumar(uno, dos);
+        System.out.println("salida "+salida);
+        //int x = oper.division(2, 0);
+        //num1 = oper.leerConsola("Opcion leyendo String, digite cualquier cosa preferible numero");
+        //System.out.println(" Valor leido :" +num1);
 
     }
     public static void main2(String[] arg) {
@@ -47,7 +56,8 @@ public class Principal {
         
         //System.out.println("lei "+num1);
         System.out.println("Finalizando ..");
-
+        PoliciaNacional poli = new PoliciaNacional();
+        
     }
     public static void main1(String[] arg) {
         System.out.println("Iniciando ..");

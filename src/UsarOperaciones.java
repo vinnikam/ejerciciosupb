@@ -1,6 +1,5 @@
 
 import java.util.List;
-import jdk.nashorn.internal.parser.Lexer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,7 +12,7 @@ import jdk.nashorn.internal.parser.Lexer;
  * @author Vinni
  */
 public class UsarOperaciones {
-    public static void main(String[] args) {
+    public static void main5(String[] args) {
         System.out.println("Usando operaciones");
         
         // crear variable clase
@@ -36,5 +35,11 @@ public class UsarOperaciones {
         
         List lalista = mivariable.pares1(2, 3);
         System.out.println(lalista);
+        int a2 = 2;
+        int b = 2;
+        
+        double area = mivariable.areaLote(a2,  b);
+        System.out.println(area);
+        
     }
 }

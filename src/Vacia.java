@@ -33,5 +33,15 @@ public class Vacia {
          return null;
     }
     
-    
+    //FUNCION CALCULE EL AREA DE UN LOTE RECTANGULAR 
+    public double areaLote(int a, int b){
+        return 0;
+    } 
+    public float areaLote1(int a, int b){
+        return 0;
+    } 
+    //funcion que calcule la raiz cuadrada y que la imprima 
+    public void raiz(int numero){
+    }
+            
 }

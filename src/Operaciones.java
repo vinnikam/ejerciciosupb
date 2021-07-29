@@ -9,13 +9,21 @@ import java.util.Scanner;
  */
 public class Operaciones {
     
-    
+
+    public int sumar(int numero1, int numero2, int numero3){
+        //System.out.println("numero 1: "+numero1);
+        //System.out.println("numero 2: "+numero2);
+        int sumatotal = numero1 + numero2 + numero3;
+        return sumatotal;
+    }
     public int sumar(int numero1, int numero2){
         //System.out.println("numero 1: "+numero1);
         //System.out.println("numero 2: "+numero2);
         int sumatotal = numero1 + numero2;
         return sumatotal;
     }
+    
+    
     public int leerNumeroEntero(String mensaje){
         return this.leerConsola(mensaje);
     }
@@ -66,7 +74,7 @@ public class Operaciones {
     
     
     
-    public double sumarD(double num1,double num2){
+    public double sumar(double num1,double num2){
         return num1+num2;
     }
     public double leerConsolaD(String mensaje){
@@ -90,4 +98,5 @@ public class Operaciones {
         
         return numero;
     }
+   
 }
