@@ -9,14 +9,18 @@ package uno;
  *
  * @author Vinni
  */
-public class PoliciaNacional {
+public class PoliciaNacional extends Persona{
+    public Long numeroPlaca;
+    public String nombreEspos;
+    public int numeroHijos;
+    
     
     public PoliciaNacional(){
         
     }
     @Override
     public String toString(){
-        return "Nada";
+        return this.nombre;
     }
     protected void generaMensaje(){
         System.out.println("Mensaje ");
