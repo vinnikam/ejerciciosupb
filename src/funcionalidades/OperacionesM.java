@@ -12,7 +12,8 @@ import java.util.Scanner;
  * @author Vinni
  */
 public class OperacionesM {
-    private int sumar(int numero1, int numero2, int numero3){
+    //+sumar(numero1 : int) : int en UML
+    public int sumar(int numero1, int numero2, int numero3){
         //System.out.println("numero 1: "+numero1);
         //System.out.println("numero 2: "+numero2);
         int sumatotal = numero1 + numero2 + numero3;

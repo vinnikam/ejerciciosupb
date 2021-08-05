@@ -10,6 +10,7 @@ public class DatosOperacion {
     private Double operador2;
     private Double resultado;
     private String nombre;
+    // - nombre : String UML
     
     public DatosOperacion(){
         System.out.println("Se ejecuto contructor");
@@ -61,7 +62,7 @@ public class DatosOperacion {
 //    }
     
     
-    
+    //+cambiaNombre(otronombre : String) : void
     // metodo para cambiar att NOMBRE
     public void cambiaNombre(String nuevonombre){
         this.nombre = nuevonombre;
