@@ -15,4 +15,11 @@ public class Cuadrado extends Figura{
     public double calcularArea(){
         return lado * lado;
     }
+    
+    public void asignarLado(double lado){
+        this.lado = lado;
+    }
+    public double obtenerLado(){
+        return this.lado;
+    }
 }

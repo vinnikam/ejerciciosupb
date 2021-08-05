@@ -15,6 +15,16 @@ public class Pruebas {
         c1.asignarNombre("cuadrado 5cm");
         String var = c1.obtenerNombre();
         System.out.println(var);
+        c1.asignarLado(5);
+        
+        double resultado = c1.calcularArea();
+        System.out.println(" El área del cuadrado "+c1.obtenerNombre()+ " es: "+resultado);
+        
+        Cuadrado c2 = new Cuadrado();
+        c2.asignarNombre("cuadrado 7.4cm");
+        c2.asignarLado(7.4);
+        resultado = c2.calcularArea();
+        System.out.println(" El área del cuadrado "+c2.obtenerNombre()+ " es: "+resultado);
         
     }
 }
