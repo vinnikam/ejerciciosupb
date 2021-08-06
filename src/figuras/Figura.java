@@ -9,6 +9,9 @@ public abstract class Figura{
     private String nombre;
     private String color;
     
+    public Figura(String nombre){
+        this.nombre = nombre;
+    }
     // metodos
     public abstract double calcularArea();
     
@@ -16,12 +19,22 @@ public abstract class Figura{
 //        return 0;
 //    }
     //asignarvalor
-    public void asignarNombre(String nombre){
-        this.nombre = nombre;
-    }
+//    public void asignarNombre(String nombre){
+//        this.nombre = nombre;
+//    }
     
     //obtenervalor
     public String obtenerNombre(){
         return this.nombre;
     }
+
+    public void asignarColor(String color){
+        this.color = color;
+    }
+    
+    //obtenervalor
+    public String obtenerColor(){
+        return this.color;
+    }
+    
 }

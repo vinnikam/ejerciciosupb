@@ -43,6 +43,9 @@ public class OperacionesM {
         return num1;
     }
     public Double convertirEnNumeroD(String numeroenCadena){
+        if (numeroenCadena == null){
+            return null;
+        }
         Double numero = null;
         try{
             numero = Double.parseDouble(numeroenCadena);
