@@ -1,6 +1,7 @@
 package parqueo;
 
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -17,8 +18,15 @@ public class Vehiculo {
         this.tipo = tipo;
     }
     
-    public int calcularPago(int tarifa){
-        return 9;
+    public long calcularPago(int tarifa){
+        
+        long diff = this.hSalida.getTime() - this.hEntrada.getTime();
+        long minutos = TimeUnit.MILLISECONDS.toMinutes(diff);
+        if (minutos == 0){
+            minutos=1;
+        }
+        long valor = minutos*tarifa;
+        return valor;
         
     }
 //    public void setPlaca(String placa){

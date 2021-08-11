@@ -18,7 +18,12 @@ public class Principal {
         for(int i = 0;i<5;i++){
             System.out.print("["+numeros[i]+"]");
         }
-       
+        System.out.println("vehiculos");
+        Vehiculo[] lista = new Vehiculo[3];
+        lista[2]=v1;
+        for(int i = 0;i<lista.length;i++){
+            System.out.print("["+lista[i]+"]");
+        }
     }
     
 }
