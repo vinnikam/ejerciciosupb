@@ -1,4 +1,4 @@
-package parqueo;
+package parqueo.funcionalidades;
 
 import java.util.Date;
 

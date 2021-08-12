@@ -1,4 +1,6 @@
-package parqueo;
+package parqueo.vista;
+
+import parqueo.funcionalidades.Vehiculo;
 
 /**
  *
