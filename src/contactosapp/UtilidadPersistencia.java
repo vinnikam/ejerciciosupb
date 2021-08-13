@@ -10,5 +10,8 @@ package contactosapp;
  * @author Vinni
  */
 public class UtilidadPersistencia {
+    public boolean guardarArchivo(Contacto contacto){
+        return true;
+    }
     
 }

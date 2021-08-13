@@ -5,12 +5,16 @@
  */
 package contactosapp.vista;
 
+import contactosapp.Contacto;
+import contactosapp.Libreta;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Vinni
  */
 public class Ventana extends javax.swing.JFrame {
-
+    private Libreta lalibreta = new Libreta();
     /**
      * Creates new form Ventana
      */
@@ -36,6 +40,11 @@ public class Ventana extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        btGuarda = new javax.swing.JButton();
+        btSalir = new javax.swing.JButton();
 
         jTextField2.setText("jTextField2");
 
@@ -65,19 +74,60 @@ public class Ventana extends javax.swing.JFrame {
         jLabel6.setText("Empresa");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(30, 180, 70, 14);
-
-        jTextField1.setText("jTextField1");
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(140, 60, 60, 20);
-
-        jTextField3.setText("jTextField3");
+        jTextField1.setBounds(140, 60, 130, 20);
         getContentPane().add(jTextField3);
-        jTextField3.setBounds(140, 90, 60, 20);
+        jTextField3.setBounds(140, 90, 130, 20);
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(140, 120, 130, 20);
+        getContentPane().add(jTextField5);
+        jTextField5.setBounds(140, 150, 130, 20);
+        getContentPane().add(jTextField6);
+        jTextField6.setBounds(140, 180, 130, 20);
+
+        btGuarda.setText("Guardar");
+        btGuarda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGuardaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btGuarda);
+        btGuarda.setBounds(270, 220, 110, 23);
+
+        btSalir.setText("Cerrar App");
+        btSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btSalir);
+        btSalir.setBounds(273, 270, 110, 23);
 
         setSize(new java.awt.Dimension(416, 339));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btGuardaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardaActionPerformed
+        // TODO add your handling code here:
+        this.adicionarContacto();
+    }//GEN-LAST:event_btGuardaActionPerformed
+
+    private void btSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalirActionPerformed
+        // TODO add your handling code here:
+        this.salir();
+    }//GEN-LAST:event_btSalirActionPerformed
+
+    private void adicionarContacto(){
+        Contacto cnuevo = new Contacto("", "", 1);
+        if(lalibreta.adicionarContacto(cnuevo)){
+            JOptionPane.showMessageDialog(this, "Creo contacto");
+        }else{
+            JOptionPane.showMessageDialog(this, "No creo contacto");
+        }
+    }
+    private void salir(){
+        System.exit(0);
+    }
     /**
      * @param args the command line arguments
      */
@@ -94,6 +144,8 @@ public class Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btGuarda;
+    private javax.swing.JButton btSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -103,5 +155,8 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

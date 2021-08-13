@@ -5,10 +5,24 @@
  */
 package contactosapp;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Vinni
  */
 public class Libreta {
+    private ArrayList<Contacto> contactos = new ArrayList<>();
+    
+    public boolean adicionarContacto(Contacto elcontacto){
+        
+        UtilidadPersistencia util = new UtilidadPersistencia();
+        if (util.guardarArchivo(elcontacto)){
+            this.contactos.add(elcontacto);
+            return true;
+        }
+        return false;
+    }
+    
     
 }
