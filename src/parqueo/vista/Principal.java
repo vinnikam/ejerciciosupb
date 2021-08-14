@@ -5,11 +5,12 @@ import parqueo.funcionalidades.Vehiculo;
 /**
  *
  * @author Vinni
+ * 2021
  */
 public class Principal {
     
     public static void main(String[] args) {
-        Vehiculo v1 = new Vehiculo("ABC123", "MOTO");
+        Vehiculo v1 = new Vehiculo("ABC123", "MOTO"); 
         
         System.out.println(v1.getPlaca());
         
