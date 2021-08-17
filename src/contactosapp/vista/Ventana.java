@@ -8,6 +8,7 @@ package contactosapp.vista;
 import contactosapp.Contacto;
 import contactosapp.Libreta;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,11 +16,13 @@ import javax.swing.JOptionPane;
  */
 public class Ventana extends javax.swing.JFrame {
     private Libreta lalibreta = new Libreta();
+    Contacto contactoSeleccionado = null;
     /**
      * Creates new form Ventana
      */
     public Ventana() {
         initComponents();
+        this.actualizaTabla();
     }
 
     /**
@@ -38,13 +41,17 @@ public class Ventana extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        cjNombre = new javax.swing.JTextField();
+        cjApellido = new javax.swing.JTextField();
+        cjCorreo = new javax.swing.JTextField();
+        cjCelular = new javax.swing.JTextField();
+        cjEmpresa = new javax.swing.JTextField();
         btGuarda = new javax.swing.JButton();
         btSalir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        cjTabla = new javax.swing.JTable();
+        btEditar = new javax.swing.JButton();
+        btBorrar = new javax.swing.JButton();
 
         jTextField2.setText("jTextField2");
 
@@ -74,16 +81,16 @@ public class Ventana extends javax.swing.JFrame {
         jLabel6.setText("Empresa");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(30, 180, 70, 14);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(140, 60, 130, 20);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(140, 90, 130, 20);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(140, 120, 130, 20);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(140, 150, 130, 20);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(140, 180, 130, 20);
+        getContentPane().add(cjNombre);
+        cjNombre.setBounds(140, 60, 130, 20);
+        getContentPane().add(cjApellido);
+        cjApellido.setBounds(140, 90, 130, 20);
+        getContentPane().add(cjCorreo);
+        cjCorreo.setBounds(140, 120, 130, 20);
+        getContentPane().add(cjCelular);
+        cjCelular.setBounds(140, 150, 130, 20);
+        getContentPane().add(cjEmpresa);
+        cjEmpresa.setBounds(140, 180, 130, 20);
 
         btGuarda.setText("Guardar");
         btGuarda.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +99,7 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btGuarda);
-        btGuarda.setBounds(270, 220, 110, 23);
+        btGuarda.setBounds(90, 220, 110, 23);
 
         btSalir.setText("Cerrar App");
         btSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -101,9 +108,37 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSalir);
-        btSalir.setBounds(273, 270, 110, 23);
+        btSalir.setBounds(470, 260, 110, 23);
 
-        setSize(new java.awt.Dimension(416, 339));
+        cjTabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cjTablaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(cjTabla);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(300, 50, 430, 140);
+
+        btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEditar);
+        btEditar.setBounds(430, 200, 90, 23);
+
+        btBorrar.setText("Borrar");
+        btBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBorrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btBorrar);
+        btBorrar.setBounds(560, 200, 90, 23);
+
+        setSize(new java.awt.Dimension(763, 345));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -117,16 +152,96 @@ public class Ventana extends javax.swing.JFrame {
         this.salir();
     }//GEN-LAST:event_btSalirActionPerformed
 
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        // TODO add your handling code here:
+        this.editarContacto();
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBorrarActionPerformed
+        // TODO add your handling code here:
+        this.borrarContacto();
+    }//GEN-LAST:event_btBorrarActionPerformed
+
+    private void cjTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cjTablaMouseClicked
+        // TODO add your handling code here:
+        this.seleccionarContactoTabla();
+    }//GEN-LAST:event_cjTablaMouseClicked
+    private void seleccionarContactoTabla(){
+        int fila = cjTabla.getSelectedRow();
+        Integer identificacion = (Integer)cjTabla.getValueAt(fila, 0);
+        contactoSeleccionado = this.lalibreta.buscar(identificacion);
+        
+        if (contactoSeleccionado != null){
+            this.cjNombre.setText(contactoSeleccionado.getNombre());
+            this.cjApellido.setText(contactoSeleccionado.getApellidos());
+            this.cjEmpresa.setText(contactoSeleccionado.getEmpresa());
+            this.cjCorreo.setText(contactoSeleccionado.getCorreo());
+            this.cjCelular.setText(""+contactoSeleccionado.getTelefono());
+            
+        }
+    }
     private void adicionarContacto(){
-        Contacto cnuevo = new Contacto("", "", 1);
-        if(lalibreta.adicionarContacto(cnuevo)){
+        String nombre = this.cjNombre.getText().toUpperCase();
+        String apellido = this.cjApellido.getText().toUpperCase();
+        String telefonoS = this.cjCelular.getText();
+        String correo = this.cjCorreo.getText().toUpperCase();
+        String empresa = this.cjEmpresa.getText().toUpperCase();
+        int telefono = Integer.parseInt(telefonoS);
+        Contacto cnuevo = new Contacto(nombre, apellido, telefono);
+        cnuevo.setEmpresa(empresa);
+        cnuevo.setCorreo(correo);
+        
+        if(lalibreta.adicionarContacto(cnuevo)==true){
             JOptionPane.showMessageDialog(this, "Creo contacto");
+            this.actualizaTabla();
+            this.limpiar();
         }else{
             JOptionPane.showMessageDialog(this, "No creo contacto");
         }
+        lalibreta.imprimirContactos();
     }
     private void salir(){
         System.exit(0);
+    }
+    
+    private void borrarContacto(){
+        if(this.lalibreta.borrarContacto(contactoSeleccionado)){
+            JOptionPane.showMessageDialog(this, "Borro contacto");
+            this.actualizaTabla();
+            this.limpiar();
+
+        }else{
+            JOptionPane.showMessageDialog(this, "No borro contacto");
+        }
+        
+    }
+    private void editarContacto(){
+        String nombre = this.cjNombre.getText().toUpperCase();
+        String apellido = this.cjApellido.getText().toUpperCase();
+        String telefonoS = this.cjCelular.getText();
+        String correo = this.cjCorreo.getText().toUpperCase();
+        String empresa = this.cjEmpresa.getText().toUpperCase();
+        int telefono = Integer.parseInt(telefonoS);
+        contactoSeleccionado.setNombre(nombre);
+        contactoSeleccionado.setApellidos(apellido);
+        contactoSeleccionado.setTelefono(telefono);
+        contactoSeleccionado.setEmpresa(empresa);
+        contactoSeleccionado.setCorreo(correo);
+        if(this.lalibreta.editarContacto(contactoSeleccionado)){
+            JOptionPane.showMessageDialog(this, "Edito contacto");
+            this.actualizaTabla();
+            this.limpiar();
+        }else{
+            JOptionPane.showMessageDialog(this, "No Edito contacto");
+        }    
+    }
+    
+    private void limpiar(){
+        this.cjNombre.setText("");
+        this.cjApellido.setText("");
+        this.cjCorreo.setText("");
+        this.cjEmpresa.setText("");
+        this.cjCelular.setText("");
     }
     /**
      * @param args the command line arguments
@@ -142,21 +257,52 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
     }
-
+    private void actualizaTabla(){
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
+        modelo.addColumn("NOMBRE");
+        modelo.addColumn("APELLIDO");
+        modelo.addColumn("TELEFONO");
+        modelo.addColumn("CORREO");
+        modelo.addColumn("EMPRESA");
+        //modelo.addColumn("FAV");
+        
+        for (Contacto contacto : this.lalibreta.buscarOrdenadoNombre()) {
+            
+            Object[] datos = {
+                contacto.getIdentificador(),
+                contacto.getNombre(),
+                contacto.getApellidos(),
+                contacto.getTelefono(),
+                contacto.getCorreo(),
+                contacto.getEmpresa()
+                
+            };
+            modelo.addRow(datos);
+                    
+        }
+        
+        this.cjTabla.setModel(modelo);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btBorrar;
+    private javax.swing.JButton btEditar;
     private javax.swing.JButton btGuarda;
     private javax.swing.JButton btSalir;
+    private javax.swing.JTextField cjApellido;
+    private javax.swing.JTextField cjCelular;
+    private javax.swing.JTextField cjCorreo;
+    private javax.swing.JTextField cjEmpresa;
+    private javax.swing.JTextField cjNombre;
+    private javax.swing.JTable cjTabla;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

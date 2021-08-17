@@ -5,12 +5,10 @@
  */
 package pq1;
 
-import figuras.Cuadrado;
 import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import parqueo.Parqueadero;
-import parqueo.Vehiculo;
+import parqueo.funcionalidades.Parqueadero;
+import parqueo.funcionalidades.Vehiculo;
 
 /**
  *
