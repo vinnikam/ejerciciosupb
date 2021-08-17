@@ -198,7 +198,7 @@ public class Ventana extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "No creo contacto");
         }
-        lalibreta.imprimirContactos();
+        //lalibreta.imprimirContactos();
     }
     private void salir(){
         System.exit(0);
