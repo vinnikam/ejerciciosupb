@@ -8,9 +8,10 @@ package contactosapp;
 import java.io.Serializable;
 
 /**
- *
+ * D.T.O.
  * @author Vinni
  */
+
 public class Contacto implements Serializable{
     // Atributos
     private String nombre;
